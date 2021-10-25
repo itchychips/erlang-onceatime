@@ -1,5 +1,7 @@
 -module(templates).
 -export([add_path/1, compile/0, render/2, render_or_fail/2]).
+-license("GNU AGPL-3.0").
+-license_link("https://www.gnu.org/licenses/agpl-3.0.txt").
 
 add_path(Path) ->
     code:add_patha(Path).

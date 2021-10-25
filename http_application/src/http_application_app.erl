@@ -4,6 +4,8 @@
 %%%-------------------------------------------------------------------
 
 -module(http_application_app).
+-license("GNU AGPL-3.0").
+-license_link("https://www.gnu.org/licenses/agpl-3.0.txt").
 
 -behaviour(application).
 
