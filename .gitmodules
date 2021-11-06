@@ -1,0 +1,3 @@
+[submodule "http_application/assets"]
+	path = http_application/assets
+	url = https://github.com/itchychips/erlang-onceatime-web-assets.git
