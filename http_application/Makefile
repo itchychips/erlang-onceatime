@@ -2,8 +2,7 @@ all: submodule
 	rebar3 compile
 
 submodule:
-	git submodule init assets
-	git submodule update assets
+	./initialize_submodules.sh
 
 analyze:
 	rebar3 dialyzer
