@@ -7,12 +7,22 @@
 handle(Req, _Args) ->
     handle(Req#req.method, elli_request:path(Req), Req).
 
-handle('GET', [], _Req) ->
+handle(Method, Path, Req) ->
+    GitDir = lists:member(<<".git">>, Path),
+    if
+        GitDir ->
+            {404, [], <<"Not Found">>};
+        not GitDir ->
+            handle_request(Method, Path, Req)
+    end.
+
+
+handle_request('GET', [], _Req) ->
     {ok, [], base_page()};
-handle('GET', [<<"assets">>|_]=Path, _Req) ->
+handle_request('GET', [<<"assets">>|_]=Path, _Req) ->
     {ok, Data} = file:read_file(elli_path_to_list(Path)),
     {ok, [], Data};
-handle(_, _, _Req) ->
+handle_request(_, _, _Req) ->
     {404, [], <<"Not Found">>}.
 
 
